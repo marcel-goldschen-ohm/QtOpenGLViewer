@@ -8,18 +8,19 @@ cmake_minimum_required(VERSION 3.11)
 set(PROJECT_NAME test_QtOpenGLViewer)
 project(${PROJECT_NAME} LANGUAGES CXX)
 
-# Fetch QtOpenGLViewer from GitHub.
-# Files will be copied to local ${qtopenglviewer_SOURCE_DIR}.
-# Building will only be done if the repository has a CMakeLists.txt file specifying build targets.
 include(FetchContent)
-FetchContent_Declare(QtOpenGLViewer
+
+# Fetch QtOpenGLViewer repository from GitHub.
+set(REPO QtOpenGLViewer)
+string(TOLOWER ${REPO} REPOlc)
+FetchContent_Declare(${REPO}
   GIT_REPOSITORY "https://github.com/marcel-goldschen-ohm/QtOpenGLViewer.git"
 )
-FetchContent_GetProperties(QtOpenGLViewer)
-if(NOT qtopenglviewer_POPULATED)
-  FetchContent_Populate(QtOpenGLViewer)
-  message(STATUS "QtOpenGLViewer source dir: ${qtopenglviewer_SOURCE_DIR}")
-  message(STATUS "QtOpenGLViewer binary dir: ${qtopenglviewer_BINARY_DIR}")
+FetchContent_GetProperties(${REPO})
+if(NOT ${REPOlc}_POPULATED)
+  FetchContent_Populate(${REPO})
+  message(STATUS "${REPO} source dir: ${${REPOlc}_SOURCE_DIR}")
+  message(STATUS "${REPO} binary dir: ${${REPOlc}_BINARY_DIR}")
 endif()
 
 set(CMAKE_CXX_STANDARD 11) # This is equal to QMAKE_CXX_FLAGS += -std=c++0x
