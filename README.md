@@ -26,6 +26,12 @@ Everything is in:
 * `QtOpenGLViewer.h`
 * `QtOpenGLViewer.cpp`
 
+### CMake:
+
+See `CMakeLists.txt` for example build as a static library.
+
+:point_right: **This is most likely what you want:** See `test/CMakeLists.txt` for example build of an app that uses QtOpenGLViewer. This build uses CMake to automatically download QtOpenGLViewer files directly from this GitHub repository, builds QtOpenGLViewer as a static library and links it to the app executable. This way you can use QtOpenGLViewer in your project without downloading or managing the QtOpenGLViewer repository manually.
+
 ### Requires:
 
 * [Qt](http://www.qt.io)
