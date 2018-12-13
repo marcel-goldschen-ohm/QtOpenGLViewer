@@ -420,7 +420,7 @@ void QtOpenGLViewer::mousePressEvent(QMouseEvent *event)
         }
         repaint();
         return;
-    } else if(event->button() == Qt::MiddleButton) {
+    } else if(event->button() == Qt::MiddleButton || (!is3D() && (event->button() == Qt::RightButton))) {
         // pan
         _mousePosition = event->pos();
         setMouseTracking(true);
@@ -522,7 +522,7 @@ void QtOpenGLViewer::mouseDoubleClickEvent(QMouseEvent *event)
     if(event->button() == Qt::LeftButton) {
         selectObject(event->pos());
         if(_selectedObject) {
-            editSelectedObject();
+            editSelectedObject(event->pos());
             return;
         }
     }
