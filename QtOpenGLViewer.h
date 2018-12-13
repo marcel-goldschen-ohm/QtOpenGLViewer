@@ -87,7 +87,7 @@ signals:
 public slots:
     virtual void goToDefaultView();
     virtual void deleteSelectedObject();
-    virtual void editSelectedObject();
+    virtual void editSelectedObject(const QPoint &mousePosition);
     
 protected:
     void initializeGL() Q_DECL_OVERRIDE;

@@ -264,7 +264,7 @@ void QtOpenGLViewer::deleteSelectedObject()
     repaint();
 }
 
-void QtOpenGLViewer::editSelectedObject()
+void QtOpenGLViewer::editSelectedObject(const QPoint &mousePosition)
 {
     return;
     // this doesn't really do anything useful, but provides a simple example of how you might popup an editor widget for your scene objects
@@ -449,7 +449,7 @@ void QtOpenGLViewer::mouseMoveEvent(QMouseEvent *event)
 {
     // Transform scene.
     bool rotate = is3D() && (event->buttons() & Qt::RightButton);
-    bool pan = event->buttons() & Qt::MiddleButton;
+    bool pan = event->buttons() & Qt::MiddleButton || (!is3D() && (event->buttons() & Qt::RightButton));
     if(rotate || pan) {
         float dx = event->x() - _mousePosition.x();
         float dy = -(event->y() - _mousePosition.y());
